@@ -1,0 +1,17 @@
+syntax = "proto3";
+package zkrollup.zkrollup;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+import "zkrollup/zkrollup/params.proto";
+
+option go_package = "zkrollup/x/zkrollup/types";
+
+// GenesisState defines the zkrollup module's genesis state.
+message GenesisState {
+  // params defines all the parameters of the module.
+  Params params = 1 [
+    (gogoproto.nullable) = false,
+    (amino.dont_omitempty) = true
+  ];
+}

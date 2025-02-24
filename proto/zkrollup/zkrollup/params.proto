@@ -1,0 +1,15 @@
+syntax = "proto3";
+package zkrollup.zkrollup;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+
+option go_package = "zkrollup/x/zkrollup/types";
+
+// Params defines the parameters for the module.
+message Params {
+  option (amino.name) = "zkrollup/x/zkrollup/Params";
+  option (gogoproto.equal) = true;
+
+  
+}
