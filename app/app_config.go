@@ -53,7 +53,10 @@ import (
 	ibcexported "github.com/cosmos/ibc-go/v8/modules/core/exported"
 	"google.golang.org/protobuf/types/known/durationpb"
 
+	ltwotxmodulev1 "zkrollup/api/zkrollup/ltwotx/module"
 	zkrollupmodulev1 "zkrollup/api/zkrollup/zkrollup/module"
+	_ "zkrollup/x/ltwotx/module" // import for side-effects
+	ltwotxmoduletypes "zkrollup/x/ltwotx/types"
 	_ "zkrollup/x/zkrollup/module" // import for side-effects
 	zkrollupmoduletypes "zkrollup/x/zkrollup/types"
 	// this line is used by starport scaffolding # stargate/app/moduleImport
@@ -94,6 +97,7 @@ var (
 		circuittypes.ModuleName,
 		// chain modules
 		zkrollupmoduletypes.ModuleName,
+		ltwotxmoduletypes.ModuleName,
 		// this line is used by starport scaffolding # stargate/app/initGenesis
 	}
 
@@ -119,6 +123,7 @@ var (
 		ibcfeetypes.ModuleName,
 		// chain modules
 		zkrollupmoduletypes.ModuleName,
+		ltwotxmoduletypes.ModuleName,
 		// this line is used by starport scaffolding # stargate/app/beginBlockers
 	}
 
@@ -138,6 +143,7 @@ var (
 		ibcfeetypes.ModuleName,
 		// chain modules
 		zkrollupmoduletypes.ModuleName,
+		ltwotxmoduletypes.ModuleName,
 		// this line is used by starport scaffolding # stargate/app/endBlockers
 	}
 
@@ -296,6 +302,10 @@ var (
 			{
 				Name:   zkrollupmoduletypes.ModuleName,
 				Config: appconfig.WrapAny(&zkrollupmodulev1.Module{}),
+			},
+			{
+				Name:   ltwotxmoduletypes.ModuleName,
+				Config: appconfig.WrapAny(&ltwotxmodulev1.Module{}),
 			},
 			// this line is used by starport scaffolding # stargate/app/moduleConfig
 		},
